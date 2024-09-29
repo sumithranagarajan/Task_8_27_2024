@@ -1,0 +1,41 @@
+				SQL Database Task		
+
+create database Zen;
+use Zen;
+
+create table zen_users(user_id int primary key, topic_id int, topic_name,task_provided);
+ 
+ create table students(student_id int primary key,  full_name, user_id int, phone_number , work_experience, foreign key(user_id)references zen_users(user_id) );
+ 
+ create table mentors( mentor_id int primary key,  mentor_name ,  user_id int,  email_id, foreign key(user_id)references zen_users(user_id) );
+ 
+Insert into zen_users (user_id, topic_id, topic_name,task_provided)VALUES
+(zen01, Topic01, “HTML & CSS”, “yes”),
+(zen54,Topic34,”JS array & objects”,”yes”),
+(zen11,Topic23,”Responsive web design”,”yes”),
+(zen27,Topic21,”Promise & Callback”,”no”),
+(zen34,Topic56,”MYSQL queries”,”no”);
+
+Insert into students (student_id,  full_name, user_id,  phone_number , work_experience) Values
+(74875,”Sumithra”,zen01,9834377823,5),
+(44354,Nagarajan”,zen22,9589485343,12),
+(49574,”Student1”,zen34,89455849234,2),
+(54758,”Student2”,zen11,9584980343,8),
+(4875,”Student6”,zen12,8943859594,4);
+
+Insert into mentors(mentor_id, user_id)Values
+(234,zen01),
+(76,zen34),
+(4534,zen78),
+(6767,zen57),
+(3435,zen4);
+
+alter table mentors
+alter mentor_name set default 'rajavasanthan';
+alter table mentors
+alter email set default 'rajavasanthan@gmail.com';
+
+Select full_name, phone_number from students where full_name=”student1”;
+Select * from students where work_experience>4;
+Select topic_name,student_id from zen_users join students on user_id=user_id where student_id=4875;
+select * from students where (full_name like 's%');
